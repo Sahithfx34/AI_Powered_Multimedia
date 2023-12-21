@@ -23,6 +23,7 @@ import { ModelAvatar } from "@/components/model-avatsr";
 const ConversationPage =()=>{
     const router = useRouter();
     const [messages,setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues:{
@@ -89,12 +90,13 @@ const ConversationPage =()=>{
                     <div className="flex flex-col-reverse gap-y-4">
                         {messages.map((message)=>(
                             <div key={message.content}
-                                 className={cn("p-8 w-full flex items-start rounded-lg gap-x-8",
-                                 message.role ==="user" ? "bg-white border border-black/10":"bg-muted")}>
+                            className={cn("p-8 w-full flex items-start rounded-lg gap-x-8",
+                            message.role ==="user" ? "bg-white border border-black/10":"bg-muted")}>
                                 {message.role === "user" ? <UserAvatar/>:<ModelAvatar/>}
-                                {message.content}
+                                {message.content+"muni is king"}
                             </div>
                         ))}
+                        
 
                     </div>
                 </div>
